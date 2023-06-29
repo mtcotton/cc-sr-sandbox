@@ -79,3 +79,37 @@ resource "confluent_api_key" "app-writer-kafka-api-key" {
     }
   }
 }
+
+// TODO: Find API Version and kind
+// Schema Registry Environment Manager
+# resource "confluent_service_account" "env-manager" {
+#   display_name = "cotton-env-manager-${random_id.env_display_id.hex}"
+#   description  = "Service account to manage 'Cotton SR Sandbox' environment"
+# }
+
+# resource "confluent_role_binding" "env-manager-environment-admin" {
+#   principal   = "User:${confluent_service_account.env-manager.id}"
+#   role_name   = "EnvironmentAdmin"
+#   crn_pattern = var.env_name
+# }
+
+# resource "confluent_api_key" "env-manager-schema-registry-api-key" {
+#   display_name = "env-manager-schema-registry-api-key"
+#   description  = "Schema Registry API Key that is owned by 'env-manager' service account"
+#   owner {
+#     id          = confluent_service_account.env-manager.id
+#     api_version = confluent_service_account.env-manager.api_version
+#     kind        = confluent_service_account.env-manager.kind
+#   }
+
+#   managed_resource {
+#     id          = env_sr_id
+#     api_version = env_sr_api_version
+#     kind        = env_sr_kind
+
+#     environment {
+#       id = var.env_id
+#     }
+#   }
+# }
+

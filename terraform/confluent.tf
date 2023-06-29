@@ -10,7 +10,7 @@ resource "confluent_kafka_cluster" "sandbox_basic" {
     }
 }
 
-resource "confluent_kafka_topic" "topic" {
+resource "confluent_kafka_topic" "customers" {
     kafka_cluster {
         id          = confluent_kafka_cluster.sandbox_basic.id
     }
@@ -21,3 +21,18 @@ resource "confluent_kafka_topic" "topic" {
         secret      = confluent_api_key.app-manager-kafka-api-key.secret
     }
 }
+
+// TODO: Use app manager once available
+# resource "confluent_schema" "customer" {
+#     schema_registry_cluster {
+#         id          = var.env_sr_id
+#     }
+#     rest_endpoint   = var.env_sr_endpoint
+#     subject_name    = "${confluent_kafka_topic.customers.topic_name}-value"
+#     format          = "AVRO"
+#     schema          = file("./schemas/avro/customer.avsc")
+#     credentials {
+#         key         = ???
+#         secret      = ???
+#     }
+# }

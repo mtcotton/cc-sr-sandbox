@@ -3,6 +3,31 @@ variable "env_id" {
     nullable = false
 }
 
+variable "env_name" {
+    type = string
+    nullable = false
+}
+
+variable "env_sr_id" {
+    type = string
+    nullable = false
+}
+
+variable "env_sr_api_version" {
+    type = string
+    nullable = false
+}
+
+variable "env_sr_kind" {
+    type = string
+    nullable = false
+}
+
+variable "env_sr_endpoint" {
+    type = string
+    nullable = false
+}
+
 variable "confluent_cloud_api_key" {
     description = "Confluent Cloud API Key (also referred as Cloud API ID)"
     type        = string

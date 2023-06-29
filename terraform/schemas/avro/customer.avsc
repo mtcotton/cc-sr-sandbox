@@ -1,0 +1,15 @@
+{
+    "type": "record",
+    "namespace": "io.confluent.developer.avro",
+    "name": "Customer",
+    "fields": [
+        {
+            "name": "fullname",
+            "type": "string"
+        },
+        {
+            "name": "dob",
+            "type": "string"
+        }
+    ]
+}
